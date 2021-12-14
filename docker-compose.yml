@@ -1,0 +1,37 @@
+version: '3.9'
+services:
+  php-fpm:
+    build: ./.config/docker/php
+    container_name: php81
+    environment:
+      - RABBITMQ_HOST=${RABBITMQ_HOST}
+      - RABBITMQ_PORT=${RABBITMQ_PORT}
+      - RABBITMQ_USER=${RABBITMQ_USER}
+      - RABBITMQ_PASSWORD=${RABBITMQ_PASSWORD}
+    volumes:
+      - ./:/var/www/html
+      - ./.config/docker/php/jit.ini:/usr/local/etc/php/conf.d/jit.ini
+      - ./.config/docker/php/timezone.ini:/usr/local/etc/php/conf.d/timezone.ini
+  nginx:
+    image: nginx:1.19.6
+    container_name: nginx-example-php81
+    restart: always
+    ports:
+      - "8000:80"
+    volumes:
+      - ./:/var/www/html
+      - ./.config/docker/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php-fpm
+
+  rabbitmq:
+    image: rabbitmq:3.9-management-alpine
+    container_name: rabbimq-exmample
+    environment:
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_USER}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_PASSWORD}
+    ports:
+      # AMQP protocol port
+      - "5672:5672"
+      # HTTP management UI
+      - "15672:15672"
