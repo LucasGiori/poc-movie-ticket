@@ -2,7 +2,7 @@
 
 namespace App\Domain;
 
-class Checkout
+class Ticket
 {
 
 }
