@@ -15,7 +15,3 @@ RUN apt-get update && apt-get install -y libpq-dev \
     && docker-php-ext-enable xdebug
 
 RUN apt-get install -y git
-
-RUN export XDEBUG_SESSION=phpstorm;
-
-COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini

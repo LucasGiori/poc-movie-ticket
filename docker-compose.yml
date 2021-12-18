@@ -12,6 +12,7 @@ services:
       - ./:/var/www/html
       - ./.config/docker/php/jit.ini:/usr/local/etc/php/conf.d/jit.ini
       - ./.config/docker/php/timezone.ini:/usr/local/etc/php/conf.d/timezone.ini
+      - ./.config/docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
   nginx:
     image: nginx:1.19.6
     container_name: nginx-example-php81
