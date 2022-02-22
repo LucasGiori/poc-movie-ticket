@@ -29,3 +29,10 @@
 - Payment
   - O subdomínio de payment é onde acontece a coleta de dados para realizar processamento do pagamento.
   
+
+### Detalhes importantes para seguir e tentar deixar um código de qualidade.
+
+- Criar testes unitários;
+- Aplicar ao máximo a lei de Demeter;
+- Aplicar Solid ao máximo;
+- Tentar exercitar ao máximo Object Calisthenics
