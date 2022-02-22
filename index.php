@@ -16,7 +16,7 @@ $connectionData = new ConnectionData(
 
 $streamConnection = new StreamConnection(connectionData: $connectionData);
 $rabbit = new Rabbit(connection: $streamConnection);
-$message = new CheckoutData(10,'Primeiro checkout realizado com sucesso');
+$message = new CheckoutData(code: 10, message: 'Primeiro checkout realizado com sucesso');
 $rabbit->publishMessage(message: $message);
 $rabbit->disconnect();
 
